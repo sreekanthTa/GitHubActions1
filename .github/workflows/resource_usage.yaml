@@ -1,0 +1,8 @@
+name: main
+on: push
+jobs:
+  call: ./github/workflows/resource.yaml
+  with:
+   message: "Hello from the resource usage"
+  secrets:
+   MY_SECRET: ${{secrets.USER_NAME}}

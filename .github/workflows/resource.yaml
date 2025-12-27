@@ -1,0 +1,23 @@
+name: Reusable
+on:
+  workflow_call:
+   inputs:
+     message:
+       required: true
+       type: string
+   secrets:
+     MY_SECRET:
+       required: true
+   outputs:
+     result:
+       value: ${{jobs.demo.step1.output.value}}
+  jobs:
+    demo:
+      steps:
+       - name: Print input and secrets
+         run: echo ${{inputs.message}} and ${{secrets.MY_SECRET}}
+        
+       - name: Setoutput
+         id: step1
+         run: echo "value=done" >> $GITHUB_OUTPUT
+
