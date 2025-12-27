@@ -24,5 +24,11 @@ jobs:
      - name: Get Build Artifact
        uses: actions/download-artifact@v4
        with:
-        name: dist-files
-        run: ls
+        name: log-files
+        path: ./logs
+
+     - name: List Files
+       run: ls -ltr
+
+     - name: Cat Files
+       run:  cat ./logs/test-output.log 
