@@ -1,27 +1,27 @@
-name: Outputs
-on: push
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      job_name_output: ${{steps.my_job.outputs.result}}
-    steps:
-      - name: Set Outputs
-        id: my_step
-        run: echo "result=I am from Step" >> $GITHUB_OUTPUT
+# name: Outputs
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     outputs:
+#       job_name_output: ${{steps.my_job.outputs.result}}
+#     steps:
+#       - name: Set Outputs
+#         id: my_step
+#         run: echo "result=I am from Step" >> $GITHUB_OUTPUT
 
-      - name: Use Outputs
-        run: echo "The output was "${{steps.my_step.outputs.result}}""
+#       - name: Use Outputs
+#         run: echo "The output was "${{steps.my_step.outputs.result}}""
 
-      - name: Job Outputs
-        id: my_job
-        run: echo "result=Iam From" >> $GITHUB_OUTPUT
+#       - name: Job Outputs
+#         id: my_job
+#         run: echo "result=Iam From" >> $GITHUB_OUTPUT
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-     - name: Use Job Outputs
-       run: echo "Deployng ${{needs.build.outputs.job_name_output}}"
+#   deploy:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#      - name: Use Job Outputs
+#        run: echo "Deployng ${{needs.build.outputs.job_name_output}}"
        
    
