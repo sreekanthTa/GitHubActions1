@@ -12,4 +12,4 @@ jobs:
     needs: call
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Previous job output: ${{ needs.call.outputs.result }}"
+        run: echo "Previous job output: ${{ needs.call.outputs.result }}"
