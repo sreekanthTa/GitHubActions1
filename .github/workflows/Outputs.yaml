@@ -1,0 +1,13 @@
+name: Outputs
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set Outputs
+        id: my_step
+        run: echo "result=hello" >> $GITHUB_OUTPUT
+
+      - name: Use Outputs
+        run: echo "The output was "${{steps.my_step.outputs.result}}""
