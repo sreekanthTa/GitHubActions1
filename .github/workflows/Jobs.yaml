@@ -1,0 +1,18 @@
+name: Jobs
+on: push
+jobs:
+  build:
+    runs-on: ubuntu
+    stpes:
+     - name: Get Code
+       uses: actions/checkout@v3
+     
+     - name: Test Code
+       run: npm run test > test-output.log
+      
+
+     - name: Upload Artifacts
+       uses: actions/upload-artifact@v3
+       with: 
+          name: log-files
+          path: test-output.log
