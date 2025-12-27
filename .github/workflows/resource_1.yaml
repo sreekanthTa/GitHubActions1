@@ -1,0 +1,17 @@
+name: Resource1
+on:
+ workflow_call:
+    inputs:
+      test_input:
+        type: string
+        required: true
+    secrets:
+      test_secret:
+        required: true
+    
+jobs:
+ test_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Details
+        run: echo ${{inputs.test_input}} and ${{secrets.test_secret}}

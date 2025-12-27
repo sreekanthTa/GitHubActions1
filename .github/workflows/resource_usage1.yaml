@@ -1,0 +1,11 @@
+name: Resource usage1
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/resource_1.yaml
+    with:
+        test_input: "Testing input"
+    secrets:
+        test_secret: ${{secrets.USER_NAME}}
+  
+   
