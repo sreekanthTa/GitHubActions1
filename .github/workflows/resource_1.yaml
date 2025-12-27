@@ -8,6 +8,9 @@ on:
     secrets:
       test_secret:
         required: true
+    outputs:
+      result:
+        value: ${{ jobs.test_build.outputs.result }}
     
 jobs:
  test_build:
