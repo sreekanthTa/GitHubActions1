@@ -3,7 +3,7 @@ name: Main
 on: push
 
 jobs:
-  call-reusable:
+  call_reusable:
     uses: ./.github/workflows/reusable.yml
     with:
       message: "Hello from the resource usage"
@@ -11,8 +11,8 @@ jobs:
       MY_SECRET: ${{ secrets.USER_NAME }}
 
   read-output:
-    needs: call-reusable
+    needs: call_reusable
     runs-on: ubuntu-latest
     steps:
       - name: Show output
-        run: echo "Reusable workflow output: ${{ needs.call-reusable.outputs.result }}"
+        run: echo "Reusable workflow output: ${{ needs.call_reusable.outputs.result }}"
