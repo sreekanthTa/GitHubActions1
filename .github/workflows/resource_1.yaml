@@ -1,6 +1,5 @@
-name: Resource1
 on:
- workflow_call:
+  workflow_call:
     inputs:
       test_input:
         type: string
@@ -11,15 +10,15 @@ on:
     outputs:
       result:
         value: ${{ jobs.test_build.outputs.result }}
-    
+
 jobs:
- test_build:
+  test_build:
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.step1.outputs.value }}
     steps:
       - name: Print Details
-        run: echo ${{inputs.test_input}} and ${{secrets.test_secret}}4
+        run: echo "${{ inputs.test_input }} and ${{ secrets.test_secret }}"
 
       - name: Set output
         id: step1

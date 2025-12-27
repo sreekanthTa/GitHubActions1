@@ -1,5 +1,4 @@
 name: Resource usage1
-
 on: push
 
 jobs:
@@ -14,5 +13,5 @@ jobs:
     needs: call
     runs-on: ubuntu-latest
     steps:
-      - name: Show reusable workflow output
+      - name: Resource1
         run: echo "Previous job output: ${{ needs.call.outputs.result }}"
