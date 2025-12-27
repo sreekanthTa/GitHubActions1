@@ -1,37 +1,37 @@
-name: Jobs
-on: push
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-     - name: Get Code
-       uses: actions/checkout@v5
+# name: Jobs
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#      - name: Get Code
+#        uses: actions/checkout@v5
      
-     - name: Test Code
-       run: bash -c  "npm run test > test-output.log || true"
+#      - name: Test Code
+#        run: bash -c  "npm run test > test-output.log || true"
       
 
-     - name: Upload Artifacts
-       uses: actions/upload-artifact@v4
-       with: 
-          name: log-files
-          path: test-output.log
+#      - name: Upload Artifacts
+#        uses: actions/upload-artifact@v4
+#        with: 
+#           name: log-files
+#           path: test-output.log
           
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-     - name: Get Build Artifact
-       uses: actions/download-artifact@v4
-       with:
-        name: log-files
-        path: ./logs
+#   test:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#      - name: Get Build Artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#         name: log-files
+#         path: ./logs
 
-     - name: List Files
-       run: ls -ltr
+#      - name: List Files
+#        run: ls -ltr
 
-     - name: Cat Files
-       run:  cat ./logs/test-output.log 
+#      - name: Cat Files
+#        run:  cat ./logs/test-output.log 
 
       
