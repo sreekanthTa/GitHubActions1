@@ -1,15 +1,18 @@
 name: Resource usage1
+
 on: push
+
 jobs:
   call:
     uses: ./.github/workflows/resource_1.yaml
     with:
-        test_input: "Testing input"
+      test_input: "Testing input"
     secrets:
-        test_secret: ${{secrets.USER_NAME}}
-  
+      test_secret: ${{ secrets.USER_NAME }}
+
   test-output-job:
     needs: call
     runs-on: ubuntu-latest
     steps:
+      - name: Show reusable workflow output
         run: echo "Previous job output: ${{ needs.call.outputs.result }}"
