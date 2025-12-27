@@ -12,6 +12,12 @@ on:
 jobs:
  test_build:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.step1.outputs.value }}
     steps:
       - name: Print Details
-        run: echo ${{inputs.test_input}} and ${{secrets.test_secret}}
+        run: echo ${{inputs.test_input}} and ${{secrets.test_secret}}4
+
+      - name: Set output
+        id: step1
+        run: echo "value=done" >> $GITHUB_OUTPUT

@@ -8,4 +8,8 @@ jobs:
     secrets:
         test_secret: ${{secrets.USER_NAME}}
   
-   
+  test-output-job:
+    needs: test_buil
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Previous job output: ${{ needs.call.outputs.result }}"
